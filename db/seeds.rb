@@ -8,6 +8,7 @@
 #---
 # encoding: utf-8
 puts "deleting previous seeds"
+Rails.cache.clear
 Product.delete_all
 Product.create!(title: 'Docker for Rails Developers',
   description:
@@ -24,7 +25,7 @@ Product.create!(title: 'Docker for Rails Developers',
       </p>},
   image_url: 'ridocker.jpg',
   price: 19.95)
-# . . .
+
 Product.create!(title: 'Design and Build Great Web APIs',
   description:
     %{<p>
@@ -41,7 +42,7 @@ Product.create!(title: 'Design and Build Great Web APIs',
       </p>},
   image_url: 'maapis.jpg',
   price: 24.95)
-# . . .
+
 
 Product.create!(title: 'Modern CSS with Tailwind',
   description:
