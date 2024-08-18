@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show edit update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  before_action :ensure_correct_cart, only: %i[show edit update destroy]
 
   # GET /carts or /carts.json
   def index
@@ -75,5 +76,11 @@ class CartsController < ApplicationController
       def invalid_cart
         logger.error "Attemp to access an invalid cart #{params[:id]}"
         redirect_to store_index_url, notice: "Invalid cart"
+      end
+
+      def ensure_correct_cart
+        if @cart.id != session[:cart_id]
+        redirect_to store_index_path, alert: "You do not have access to that cart."
+        end
       end
 end

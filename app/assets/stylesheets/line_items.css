@@ -1,0 +1,29 @@
+@keyframes line-item-highlight {
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80% {
+    background: #8f8;
+    /* Green */
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    background: #ff0;
+    /* Yellow */
+  }
+
+  100% {
+    background: #8f8;
+    /* End on Green */
+  }
+}
+
+.line-item-highlight {
+  animation: line-item-highlight 1.5s ease-in-out;
+}
